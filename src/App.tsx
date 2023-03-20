@@ -1,19 +1,22 @@
 import React from 'react';
 
-type StatusButton = 'start' | 'pause';
+enum STATUS {
+  START = 'start',
+  IDLE = 'idle',
+}
 
 function App() {
   const [time, setTime] = React.useState({ h: 0, m: 0, s: 0 });
-  const [status, setStatus] = React.useState<StatusButton>('start');
+  const [status, setStatus] = React.useState<STATUS>(STATUS.IDLE);
 
   const start = () => {
-    setStatus('start');
+    setStatus(STATUS.START);
   };
   const stop = () => {
-    setStatus('pause');
+    setStatus(STATUS.IDLE);
   };
   const reset = () => {
-    setStatus('pause');
+    setStatus(STATUS.IDLE);
     setTime({ h: 0, m: 0, s: 0 });
   };
 
